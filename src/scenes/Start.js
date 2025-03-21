@@ -9,6 +9,9 @@ export class Start extends Phaser.Scene {
         this.load.spritesheet('ship', 'assets/spaceship.png', { frameWidth: 176, frameHeight: 96 });
         this.load.image('bullet', 'assets/bullet.png');
         this.load.image('ball', 'assets/ball.png');
+        this.load.image('upButton', 'assets/upButton.png'); // Botão para mover para cima
+        this.load.image('downButton', 'assets/downButton.png'); // Botão para mover para baixo
+        this.load.image('shootButton', 'assets/shootButton.png'); // Botão para atirar
     }
 
     create() {
@@ -26,7 +29,22 @@ export class Start extends Phaser.Scene {
         }
         this.ship.play('fly');
 
-        this.cursors = this.input.keyboard.createCursorKeys();
+        // Controles touch para dispositivos móveis
+        this.upButton = this.add.sprite(100, 600, 'upButton').setInteractive().setScale(0.5);
+        this.downButton = this.add.sprite(100, 700, 'downButton').setInteractive().setScale(0.5);
+        this.shootButton = this.add.sprite(1180, 600, 'shootButton').setInteractive().setScale(0.5);
+
+        this.upButton.on('pointerdown', () => {
+            this.ship.y -= 5;
+        });
+
+        this.downButton.on('pointerdown', () => {
+            this.ship.y += 5;
+        });
+
+        this.shootButton.on('pointerdown', () => {
+            this.shootBullet();
+        });
 
         this.bullets = this.physics.add.group();
         this.balls = this.physics.add.group(); // Usaremos para as respostas como texto
@@ -50,10 +68,6 @@ export class Start extends Phaser.Scene {
 
         this.newMathQuestion();
 
-        this.input.keyboard.on('keydown-SPACE', () => {
-            this.shootBullet();
-        });
-
         // Inicializando o texto para "Acerto" ou "Erro"
         this.resultText = this.add.text(640, 360, '', {
             fontSize: '60px',
@@ -67,12 +81,6 @@ export class Start extends Phaser.Scene {
 
     update() {
         this.background.tilePositionX += 2;
-
-        if (this.cursors.up.isDown) {
-            this.ship.y -= 5;
-        } else if (this.cursors.down.isDown) {
-            this.ship.y += 5;
-        }
 
         this.ship.y = Phaser.Math.Clamp(this.ship.y, 50, 670);
 
