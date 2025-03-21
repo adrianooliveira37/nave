@@ -9,9 +9,9 @@ export class Start extends Phaser.Scene {
         this.load.spritesheet('ship', 'assets/spaceship.png', { frameWidth: 176, frameHeight: 96 });
         this.load.image('bullet', 'assets/bullet.png');
         this.load.image('ball', 'assets/ball.png');
-        this.load.image('upButton', 'assets/upButton.png'); // Botão para mover para cima
-        this.load.image('downButton', 'assets/downButton.png'); // Botão para mover para baixo
-        this.load.image('shootButton', 'assets/shootButton.png'); // Botão para atirar
+        this.load.image('upButton', 'assets/icons8-botão-desligar-48.png'); // Botão para mover para cima
+        this.load.image('downButton', 'assets/icons8-botão-desligar-48.png'); // Botão para mover para baixo
+        this.load.image('shootButton', 'assets/icons8-botão-desligar-48.png'); // Botão para atirar
     }
 
     create() {
