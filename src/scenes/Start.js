@@ -30,9 +30,9 @@ export class Start extends Phaser.Scene {
         this.ship.play('fly');
 
         // Controles touch para dispositivos móveis
-        this.upButton = this.add.sprite(100, 600, 'upButton').setInteractive().setScale(0.5);
-        this.downButton = this.add.sprite(100, 700, 'downButton').setInteractive().setScale(0.5);
-        this.shootButton = this.add.sprite(1180, 600, 'shootButton').setInteractive().setScale(0.5);
+        this.upButton = this.add.sprite(100, 600, 'upButton').setInteractive().setScale(0.8);
+        this.downButton = this.add.sprite(100, 700, 'downButton').setInteractive().setScale(0.8);
+        this.shootButton = this.add.sprite(1180, 600, 'shootButton').setInteractive().setScale(0.8);
 
         this.upButton.on('pointerdown', () => {
             this.ship.y -= 5;
