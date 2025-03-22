@@ -124,7 +124,7 @@
 
         for (let i = 0; i < 3; i++) {
             // Criando a "bola" como sprite de bullet
-            let ball = this.balls.create(1200, 200 + i * 150, 'ball').setScale(0.3);
+            let ball = this.balls.create(1200, 200 + i * 150, 'ball').setScale(0.05);
             ball.setVelocityX(-200);
             ball.answer = answers[i];
 
